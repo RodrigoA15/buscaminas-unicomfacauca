@@ -1,59 +1,34 @@
 import React from 'react';
 import { AuthorsBanner } from './AuthorsBanner';
 import { PixelBombIcon, PixelFlagIcon } from './PixelDecorations';
+import defaultBanner from '../../assets/logo-unicomfa.png';
 
 interface HeaderProps {
   /**
-   * Ruta opcional a la imagen del logo institucional/personalizado.
-   * Si no se proporciona, se muestra un placeholder sutil preparado para insertar una etiqueta <img>.
+   * Ruta o importación a la imagen del banner institucional (por defecto logo-unicomfa.png)
    */
-  logoSrc?: string;
-  logoAlt?: string;
+  bannerSrc?: string;
+  bannerAlt?: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  logoSrc,
-  logoAlt = 'Logo Institucional',
+  bannerSrc = defaultBanner,
+  bannerAlt = 'Banner Institucional Unicomfacauca',
 }) => {
   return (
-    <header className="w-full relative z-10 flex flex-col items-center pt-3 pb-2 px-3 sm:px-6">
+    <header className="w-full relative z-10 flex flex-col items-center pt-4 pb-2 px-4">
       {/* 
         ========================================================================
-        ZONA SUPERIOR DERECHA: ESPACIO EXCLUSIVO PARA LOGO PERSONALIZADO
+        BANNER CENTRAL INSTITUCIONAL (PROTAGONISMO AMPLIO Y CENTRADO)
         ========================================================================
       */}
-      <div className="w-full max-w-7xl flex items-center justify-end mb-1 sm:mb-2 min-h-[48px] sm:min-h-[64px]">
-        {/* Contenedor reservado para logo personalizado */}
-        <div
-          id="custom-logo-container"
-          className="flex items-center justify-end z-20 transition-transform hover:scale-105 duration-200"
-          title="Espacio reservado para logotipo"
-        >
-          {logoSrc ? (
-            /* Si se pasa la prop logoSrc se renderiza directamente la imagen */
-            <img
-              src={logoSrc}
-              alt={logoAlt}
-              className="max-h-14 sm:max-h-16 w-auto object-contain drop-shadow-md"
-            />
-          ) : (
-            /* 
-              ------------------------------------------------------------------
-              <!-- INSERTA AQUÍ TU IMAGEN DE LOGO -->
-              Para usar tu propia imagen directamente en el código, puedes reemplazar
-              este bloque o descomentar la etiqueta <img>:
-              ------------------------------------------------------------------
-            */
-            <div className="flex items-center gap-2 bg-white/95 hover:bg-white border-2 border-sky-400 hover:border-yellow-400 rounded-xl px-3 py-1.5 shadow-md shadow-blue-950/20 backdrop-blur-sm cursor-pointer group">
-
-              <img
-                src="/src/assets/logo-unicomfa.png"
-                alt="Logo Institucional"
-                className="max-h-16 w-auto object-contain"
-              />
-
-            </div>
-          )}
+      <div className="w-full max-w-xl md:max-w-3xl lg:max-w-4xl flex justify-center mb-4">
+        <div className="bg-white/95 backdrop-blur-sm p-2 sm:p-3 rounded-2xl shadow-lg border border-white/60 w-full flex justify-center transition-transform hover:scale-[1.01] duration-300">
+          <img
+            src={bannerSrc}
+            alt={bannerAlt}
+            className="w-full h-auto max-h-32 sm:max-h-40 md:max-h-48"
+          />
         </div>
       </div>
 
